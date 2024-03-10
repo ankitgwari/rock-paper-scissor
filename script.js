@@ -15,10 +15,8 @@ updateScore();
 
 
 console.log(Record);
-function game(choose) {
+function compPlay(){
     const random = Math.floor(Math.random() * 3);
-    let result = '';
-
     if (random === 0) {
         comp = 'rock';
     }
@@ -28,6 +26,12 @@ function game(choose) {
     else {
         comp = 'scissor'
     }
+    return comp;
+}
+function game(choose) {
+
+    let result = '';
+    const comp = compPlay();
     // console.log(comp);
     if (choose === comp) {
         console.log(`Player choose: ${choose} Computer choose: ${comp}`);
@@ -75,6 +79,21 @@ function game(choose) {
     updateScore();
     document.querySelector('.js-choose').innerHTML = ` You <img src="img/${choose}.jpg" alt="ROCK" class="result-icons"> <img src="img/${comp}.jpg" alt="ROCK" class="result-icons"> Computer `;
     document.querySelector('.js-result').innerHTML = `${result}`;
+}
+let isAutoPlaying = false; 
+let intervalId;
+function autoPlay(){
+    if(!isAutoPlaying){
+        intervalId = setInterval(function(){
+            const choose = compPlay();
+            game(choose);
+        },1000);
+        isAutoPlaying = true;
+    }
+    else{
+        clearInterval(intervalId);
+        isAutoPlaying = false;
+    }
 }
 function updateScore() {
     document.querySelector('.js-score').innerHTML = `Win:${Record.wins}  Loss:${Record.loss}  Tie:${Record.ties}`;

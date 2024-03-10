@@ -46,7 +46,7 @@ body {
     padding-top: 20px;
 }
 
-.reset-button {
+.reset-button, .auto-play {
     border: none;
     height: 50px;
     width: 120px;
@@ -54,7 +54,10 @@ body {
     background-color: rgb(18, 216, 0);
     color: white;
     font-size: 15px;
-
+    cursor:pointer;
+}
+.auto-play{
+    background-color: rgb(236, 155, 48);
 }
 
 .result-box {
