@@ -84,7 +84,7 @@ let isAutoPlaying = false;
 let intervalId;
 function autoPlay(){
     if(!isAutoPlaying){
-        intervalId = setInterval(function(){
+        intervalId = setInterval(()=>{
             const choose = compPlay();
             game(choose);
         },1000);
